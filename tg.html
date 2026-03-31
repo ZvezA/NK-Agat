@@ -42,7 +42,7 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 420px;
+            max-width: 450px;
             width: 100%;
         }
 
@@ -87,11 +87,17 @@
             font-size: 14px;
         }
 
+        .proxy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
         .proxy-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 30px;
+            padding: 26px;
             border: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.3s ease;
         }
@@ -103,17 +109,49 @@
             box-shadow: 0 20px 40px rgba(0, 136, 204, 0.3);
         }
 
-        .proxy-status {
+        .proxy-card.mtproto {
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .proxy-card.socks {
+            border-left: 4px solid #06b6d4;
+        }
+
+        .proxy-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .proxy-type {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .type-badge {
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .type-badge.mtproto {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+        }
+
+        .type-badge.socks {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: #22c55e;
             animation: pulse 2s infinite;
@@ -124,20 +162,14 @@
             50% { opacity: 0.4; }
         }
 
-        .status-text {
-            color: #22c55e;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
         .proxy-server {
             font-family: 'Courier New', monospace;
             background: rgba(0, 0, 0, 0.3);
-            padding: 16px 20px;
+            padding: 14px 18px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14px;
             color: #38bdf8;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
             word-break: break-all;
             border: 1px solid rgba(56, 189, 248, 0.3);
@@ -145,12 +177,12 @@
 
         .connect-btn {
             width: 100%;
-            padding: 16px 24px;
+            padding: 15px 22px;
             background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
             color: white;
             border: none;
             border-radius: 14px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -168,8 +200,8 @@
         }
 
         .connect-btn svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
 
@@ -196,12 +228,12 @@
             }
 
             .proxy-card {
-                padding: 24px;
+                padding: 22px;
             }
 
             .connect-btn {
-                padding: 14px 20px;
-                font-size: 15px;
+                padding: 13px 18px;
+                font-size: 14px;
             }
         }
     </style>
@@ -215,23 +247,41 @@
                 </svg>
             </div>
             <h1>Proxy для Telegram</h1>
-            <p class="subtitle">MTProto сервер для безопасного подключения</p>
+            <p class="subtitle">Выберите сервер для подключения</p>
         </div>
 
-        <div class="proxy-card">
-            <div class="proxy-status">
-                <div class="status-dot"></div>
-                <span class="status-text">Сервер активен</span>
+        <div class="proxy-list">
+            <div class="proxy-card mtproto">
+                <div class="proxy-header">
+                    <div class="proxy-type">
+                        <span class="type-badge mtproto">MTProto</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <p class="proxy-server">138.124.52.12:443</p>
+                <a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275" class="connect-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Подключиться
+                </a>
             </div>
 
-            <p class="proxy-server">138.124.52.12:443</p>
-
-            <a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275" class="connect-btn">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-                Подключиться к Telegram
-            </a>
+            <div class="proxy-card socks">
+                <div class="proxy-header">
+                    <div class="proxy-type">
+                        <span class="type-badge socks">SOCKS5</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <p class="proxy-server">147.45.69.142:1050</p>
+                <a href="tg://socks?server=147.45.69.142&port=1050&user=admin&pass=admin" class="connect-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Подключиться
+                </a>
+            </div>
         </div>
 
         <div class="footer">
