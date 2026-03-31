@@ -42,42 +42,42 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 480px;
+            max-width: 420px;
             width: 100%;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .logo {
-            width: 75px;
-            height: 75px;
+            width: 85px;
+            height: 85px;
             background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 18px;
-            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.4);
+            box-shadow: 0 10px 35px rgba(0, 136, 204, 0.5);
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo svg {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             fill: white;
         }
 
         h1 {
             color: #ffffff;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             margin-bottom: 6px;
         }
@@ -87,62 +87,33 @@
             font-size: 14px;
         }
 
-        .proxy-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
         .proxy-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            border-radius: 14px;
-            padding: 18px;
+            border-radius: 20px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.3s ease;
         }
 
         .proxy-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(0, 136, 204, 0.4);
-            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.3);
         }
 
-        .proxy-card {
-            border-left: 4px solid #8b5cf6;
-        }
-
-        .proxy-header {
+        .proxy-status {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .proxy-type {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .type-badge {
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .type-badge.mtproto {
-            background: rgba(139, 92, 246, 0.2);
-            color: #8b5cf6;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .status-dot {
-            width: 7px;
-            height: 7px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: #22c55e;
             animation: pulse 2s infinite;
@@ -153,97 +124,84 @@
             50% { opacity: 0.4; }
         }
 
+        .status-text {
+            color: #22c55e;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
         .proxy-server {
             font-family: 'Courier New', monospace;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 13px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 15px;
             color: #38bdf8;
-            margin-bottom: 14px;
+            margin-bottom: 25px;
+            text-align: center;
             word-break: break-all;
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         .connect-btn {
             width: 100%;
-            padding: 13px 18px;
+            padding: 16px 24px;
             background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 14px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
             text-decoration: none;
         }
 
         .connect-btn:hover {
             background: linear-gradient(135deg, #0099ee 0%, #0077bb 100%);
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.35);
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.4);
         }
 
         .connect-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 22px;
+            height: 22px;
             fill: currentColor;
         }
 
         .footer {
             text-align: center;
-            margin-top: 35px;
+            margin-top: 30px;
             color: rgba(255, 255, 255, 0.45);
             font-size: 12px;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #22c55e;
-            color: #000;
-            padding: 11px 22px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
         @media (max-width: 480px) {
             h1 {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .logo {
-                width: 65px;
-                height: 65px;
+                width: 70px;
+                height: 70px;
             }
 
             .logo svg {
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
             }
 
             .proxy-card {
-                padding: 15px;
+                padding: 24px;
             }
 
             .connect-btn {
-                padding: 12px 15px;
-                font-size: 13px;
+                padding: 14px 20px;
+                font-size: 15px;
             }
         }
     </style>
@@ -257,77 +215,29 @@
                 </svg>
             </div>
             <h1>Proxy для Telegram</h1>
-            <p class="subtitle">Выберите сервер для подключения</p>
+            <p class="subtitle">MTProto сервер для безопасного подключения</p>
         </div>
 
-        <div class="proxy-list">
-            <div class="proxy-card">
-                <div class="proxy-header">
-                    <div class="proxy-type">
-                        <span class="type-badge mtproto"SOCKS5</span>
-                        <div class="status-dot"></div>
-                    </div>
-                </div>
-                <p class="proxy-server">147.45.69.142:1050</p>
-                <a href="tg://proxy?server=147.45.69.142&port=1050" class="connect-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                    Подключиться
-                </a>
+        <div class="proxy-card">
+            <div class="proxy-status">
+                <div class="status-dot"></div>
+                <span class="status-text">Сервер активен</span>
             </div>
 
-            <div class="proxy-card">
-                <div class="proxy-header">
-                    <div class="proxy-type">
-                        <span class="type-badge mtproto">MTProto</span>
-                        <div class="status-dot"></div>
-                    </div>
-                </div>
-                <p class="proxy-server">138.124.52.12:443</p>
-                <a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275" class="connect-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                    Подключиться
-                </a>
-            </div>
+            <p class="proxy-server">138.124.52.12:443</p>
+
+            <a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275" class="connect-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                Подключиться к Telegram
+            </a>
         </div>
 
         <div class="footer">
             <p>Быстрое и безопасное подключение</p>
         </div>
     </div>
-
-    <div class="toast" id="toast">Скопировано!</div>
-
-    <script>
-        document.querySelectorAll('.proxy-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (!e.target.closest('.connect-btn')) {
-                    const btn = this.querySelector('.connect-btn');
-                    if (btn) {
-                        const href = btn.getAttribute('href');
-                        const server = href.match(/server=([^&]+)/)?.[1];
-                        if (server) {
-                            navigator.clipboard.writeText(server).then(() => {
-                                showToast('Адрес скопирован!');
-                            });
-                        }
-                    }
-                }
-            });
-        });
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
-        }
-    </script>
 </body>
 </html>
 
