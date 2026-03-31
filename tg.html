@@ -109,11 +109,7 @@
             box-shadow: 0 12px 30px rgba(0, 136, 204, 0.25);
         }
 
-        .proxy-card.socks {
-            border-left: 4px solid #06b6d4;
-        }
-
-        .proxy-card.mtproto {
+        .proxy-card {
             border-left: 4px solid #8b5cf6;
         }
 
@@ -137,11 +133,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-
-        .type-badge.socks {
-            background: rgba(6, 182, 212, 0.2);
-            color: #06b6d4;
         }
 
         .type-badge.mtproto {
@@ -270,26 +261,10 @@
         </div>
 
         <div class="proxy-list">
-            <div class="proxy-card socks">
+            <div class="proxy-card">
                 <div class="proxy-header">
                     <div class="proxy-type">
-                        <span class="type-badge socks">SOCKS5</span>
-                        <div class="status-dot"></div>
-                    </div>
-                </div>
-                <p class="proxy-server">10.11.55.109:2080</p>
-                <a href="tg://socks?server=10.11.55.109&port=2080" class="connect-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                    Подключиться
-                </a>
-            </div>
-
-            <div class="proxy-card mtproto">
-                <div class="proxy-header">
-                    <div class="proxy-type">
-                        <span class="type-badge mtproto">MTProto</span>
+                        <span class="type-badge mtproto"SOCKS5</span>
                         <div class="status-dot"></div>
                     </div>
                 </div>
@@ -302,7 +277,7 @@
                 </a>
             </div>
 
-            <div class="proxy-card mtproto">
+            <div class="proxy-card">
                 <div class="proxy-header">
                     <div class="proxy-type">
                         <span class="type-badge mtproto">MTProto</span>
