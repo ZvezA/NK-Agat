@@ -91,6 +91,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            margin-bottom: 20px;
         }
 
         .proxy-card {
@@ -205,6 +206,276 @@
             fill: currentColor;
         }
 
+        /* Instruction Toggle Button */
+        .instruction-toggle {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 14px;
+            color: #22c55e;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+        }
+
+        .instruction-toggle:hover {
+            background: rgba(34, 197, 94, 0.25);
+            transform: scale(1.02);
+        }
+
+        .instruction-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .instruction-toggle.active svg {
+            transform: rotate(180deg);
+        }
+
+        /* Instruction Section */
+        .instruction-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: none;
+            animation: slideDown 0.4s ease;
+        }
+
+        .instruction-section.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-15px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .instruction-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .instruction-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .instruction-title h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .instruction-title p {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+        }
+
+        .android-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #22c55e;
+            font-weight: 600;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Steps */
+        .steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 38px;
+            margin-bottom: 16px;
+        }
+
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .steps li strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .steps li span {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+        }
+
+        .step-path {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #38bdf8;
+            margin-top: 6px;
+            display: inline-block;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* Checkbox Demo */
+        .checkbox-demo {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .checkbox-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #22c55e;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #22c55e;
+            flex-shrink: 0;
+        }
+
+        .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .checkbox-label {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        /* UI Preview */
+        .ui-preview {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ui-header {
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .ui-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 0 10px 10px;
+            padding: 12px;
+        }
+
+        .ui-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ui-row:last-child {
+            border-bottom: none;
+        }
+
+        .ui-label {
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 11px;
+        }
+
+        .ui-toggle {
+            width: 40px;
+            height: 24px;
+            background: #22c55e;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .ui-toggle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            right: 2px;
+            top: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -234,6 +505,20 @@
             .connect-btn {
                 padding: 13px 18px;
                 font-size: 14px;
+            }
+
+            .instruction-section {
+                padding: 20px;
+            }
+
+            .steps li {
+                padding-left: 34px;
+            }
+
+            .steps li::before {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
             }
         }
     </style>
@@ -284,10 +569,112 @@
             </div>
         </div>
 
+        <!-- Instruction Toggle Button -->
+        <button class="instruction-toggle" id="toggleInstruction">
+            <span>📖 Как включить автовыбор прокси</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </button>
+
+        <!-- Instruction Section -->
+        <div class="instruction-section" id="instructionSection">
+            <div class="instruction-header">
+                <div class="instruction-icon">⚙️</div>
+                <div class="instruction-title">
+                    <h3>Автоопределение прокси</h3>
+                    <p>Инструкция по включению автоматического переключения</p>
+                    <div class="android-badge">🤖 Только Android</div>
+                </div>
+            </div>
+
+            <ol class="steps">
+                <li>
+                    <strong>Откройте Telegram на Android</strong>
+                    <span>Запустите приложение на вашем устройстве</span>
+                </li>
+                <li>
+                    <strong>Откройте меню настроек</strong>
+                    <div class="step-path">☰ Меню → Настройки → Данные и память</div>
+                </li>
+                <li>
+                    <strong>Перейдите в раздел Прокси</strong>
+                    <span>Прокрутите вниз до раздела «Прокси-сервер»</span>
+                </li>
+                <li>
+                    <strong>Включите использование прокси</strong>
+                    <span>Активируйте переключатель «Использовать прокси»</span>
+                </li>
+                <li>
+                    <strong>Включите автоопределение</strong>
+                    <span>Активируйте галочку «Автоопределение доступности прокси»</span>
+                    <div class="checkbox-demo">
+                        <div class="checkbox-row">
+                            <div class="checkbox-custom"></div>
+                            <div>
+                                <div class="checkbox-label">Автоопределение доступности прокси</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>Добавьте несколько прокси</strong>
+                    <span>Нажмите «Добавить прокси» и введите данные 2-5 серверов</span>
+                </li>
+            </ol>
+
+            <!-- UI Preview -->
+            <div class="ui-preview">
+                <div class="ui-header">🔘 Прокси</div>
+                <div class="ui-content">
+                    <div class="ui-row">
+                        <span class="ui-label">Использовать прокси</span>
+                        <div class="ui-toggle"></div>
+                    </div>
+                    <div class="ui-row">
+                        <span class="ui-label">Автоопределение доступности прокси</span>
+                        <div class="ui-toggle"></div>
+                    </div>
+                    <div class="ui-row">
+                        <span class="ui-label">Список прокси</span>
+                        <span style="color: rgba(255,255,255,0.45); font-size: 10px;">3 добавлено →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
             <p>Быстрое и безопасное подключение</p>
+            <p style="margin-top: 8px; opacity: 0.6;">Актуально на март 2026 года</p>
         </div>
     </div>
+
+    <script>
+        // Toggle instruction visibility
+        const toggleBtn = document.getElementById('toggleInstruction');
+        const instructionSection = document.getElementById('instructionSection');
+
+        toggleBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            instructionSection.classList.toggle('show');
+            
+            if (instructionSection.classList.contains('show')) {
+                this.querySelector('span').textContent = '📖 Скрыть инструкцию';
+            } else {
+                this.querySelector('span').textContent = '📖 Как включить автовыбор прокси';
+            }
+        });
+
+        // Add hover effect to proxy cards
+        document.querySelectorAll('.proxy-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
 
