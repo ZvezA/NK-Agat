@@ -1,3 +1,370 @@
-<html lang="en">
-<h1><a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275">Прокси для Телеграмма MTProto</a></h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTProto Proxy для Telegram</title>
+    <link href="https://fontsource.org/inter/400.css" rel="stylesheet">
+    <link href="https://fontsource.org/inter/600.css" rel="stylesheet">
+    <link href="https://fontsource.org/inter/700.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://image.qwenlm.ai/public_source/5b0deca4-c3d8-4d46-ad81-1ecc8ef998d0/156e69ec1-0918-4ddf-87c9-bf1e56cd40c5.png') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo svg {
+            width: 45px;
+            height: 45px;
+            fill: white;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .proxy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .proxy-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .proxy-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 136, 204, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 136, 204, 0.3);
+        }
+
+        .proxy-card.local {
+            border-left: 4px solid #4ade80;
+        }
+
+        .proxy-card.external {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .proxy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .proxy-type {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .type-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .type-badge.local {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+        }
+
+        .type-badge.external {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .proxy-info {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .proxy-server {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 13px;
+            color: #00d4ff;
+        }
+
+        .connect-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .connect-btn:hover {
+            background: linear-gradient(135deg, #0099ee 0%, #0077bb 100%);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+        }
+
+        .connect-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #4ade80;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .logo svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            .proxy-card {
+                padding: 16px;
+            }
+
+            .connect-btn {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+            </div>
+            <h1>MTProto Proxy</h1>
+            <p class="subtitle">Быстрое подключение к Telegram</p>
+        </div>
+
+        <div class="proxy-list">
+            <div class="proxy-card local">
+                <div class="proxy-header">
+                    <div class="proxy-type">
+                        <span class="type-badge local">Локальный</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <p class="proxy-info">
+                    <span class="proxy-server">192.168.1.100:443</span>
+                </p>
+                <a href="tg://proxy?server=192.168.1.100&port=443&secret=localproxysecret123456789" class="connect-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Подключиться
+                </a>
+            </div>
+
+            <div class="proxy-card external">
+                <div class="proxy-header">
+                    <div class="proxy-type">
+                        <span class="type-badge external">Внешний #1</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <p class="proxy-info">
+                    <span class="proxy-server">138.124.52.12:443</span>
+                </p>
+                <a href="tg://proxy?server=138.124.52.12&port=443&secret=eeba999c3d340f11bc5cbb6ed5d958aee974672e6e6b2d616761742e7275" class="connect-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Подключиться
+                </a>
+            </div>
+
+            <div class="proxy-card external">
+                <div class="proxy-header">
+                    <div class="proxy-type">
+                        <span class="type-badge external">Внешний #2</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <p class="proxy-info">
+                    <span class="proxy-server">185.175.208.93:443</span>
+                </p>
+                <a href="tg://proxy?server=185.175.208.93&port=443&secret=dd00000000000000000000000000000000000000000000000000000000000000" class="connect-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Подключиться
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>MTProto Proxy Server • Безопасное соединение</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Скопировано!</div>
+
+    <script>
+        document.querySelectorAll('.proxy-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.connect-btn')) {
+                    const btn = this.querySelector('.connect-btn');
+                    if (btn) {
+                        const href = btn.getAttribute('href');
+                        const secret = href.match(/secret=([^&]+)/)?.[1];
+                        if (secret) {
+                            navigator.clipboard.writeText(secret).then(() => {
+                                showToast('Секрет скопирован!');
+                            });
+                        }
+                    }
+                }
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
 </html>
+
